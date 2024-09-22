@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  db:
+    user: root
+    image: postgres:14
+    hostname: postgres_cautio
+    restart: always
+    container_name: postgres_cautio
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: cautio_root
+      POSTGRES_PASSWORD: cmwko9023jio
+      POSTGRES_DB: games
+      PGUSER: cautio_root
+      PGDATABASE: games
+      PGPASSWORD: cmwko9023jio
+      PGHOST: localhost
+      PGPORT: 5432
+
+  app:
+    image: cautio:latest
+    hostname: cautio_app 
+    restart: always
+    container_name: cautio_app
+    build:
+      context: .
+      dockerfile: ./cautio_app.Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 7894:7894

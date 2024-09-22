@@ -1,0 +1,8 @@
+socketIO-client
+flask
+flask-sqlalchemy
+flask-socketio
+flask-cors
+flask-restful
+psycopg2
+sqlalchemy
